@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Email</th>
-    <th>Password</th>
+   
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +12,7 @@
 <% @customers.each do |customer| %>
   <tr>
     <td><%= customer.email %></td>
-    <td><%= customer.password %></td>
+    
     <td><%= link_to 'Show', customer %></td>
     <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
     <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
