@@ -1,0 +1,26 @@
+var locations = new Array();
+var lati = 47.5839;
+var longi = -122.299;
+locations.push(['madhu',lati, longi]);
+console.log(map);
+console.log($('#googleMap')[0]);
+showMarkers();
+function showMarkers(){
+	console.log('map');
+	console.log(map)
+  var marker ,i;
+   var infowindow = new google.maps.InfoWindow();
+  for (i = 0; i < locations.length; i++) {
+  		console.log(locations[i][1]);
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+          map: map
+        });
+  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+          return function() {
+            infowindow.setContent(locations[i][0]);
+            infowindow.open(map, marker);
+          }
+        })(marker, i));
+  }
+}

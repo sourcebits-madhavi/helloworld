@@ -15,37 +15,43 @@
   </div>
 <br/>
   <br/>
+   
   <div>
     <h2>Find the location of the IP address</h2>
     
-      <%= form_tag :action => 'search' do %>
+      <%= form_tag( {:action => 'search'}, :remote => true, :id => 'myform') do %>
        <p>
         <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search", :class => 'nil' %>
+        <%= submit_tag "Search"%>
        </p>
       <% end %>
   </div>
+  <div id="results"></div>
  <br/>
 <br/>
+
+<div id="googleMap" style="width:950px;height:500px;"></div>
+</center>
 
 <script
 src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
 </script>
 <script>
+var map;
 function initialize()
 {
-  var center = new google.maps.LatLng(51.508742,-0.120850);
+  
   if (navigator.geolocation)
     {
       navigator.geolocation.getCurrentPosition(function(position){
         console.log(position.coords.latitude);
-        center = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+        var center = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
         var mapProp = {
         center:center,
-        zoom:5,
+        zoom:2,
         mapTypeId:google.maps.MapTypeId.ROADMAP
       };
-      var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+      map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
         
       });
     }
@@ -54,7 +60,3 @@ function initialize()
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-
-<body>
-<div id="googleMap" style="width:700px;height:480px;"></div>
-</center>
