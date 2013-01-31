@@ -1,5 +1,17 @@
 Helloworld::Application.routes.draw do
   
+  get "ips/create"
+
+  get "ips/new"
+
+  get "ips/index"
+
+  get "ip/create"
+
+  get "ip/new"
+
+  get "ip/index"
+
   get "sessions/create"
 
   get "sessions/new"
@@ -9,6 +21,8 @@ Helloworld::Application.routes.draw do
   #get "staticpages/home"
 
   root :to => 'staticpages#home'
+
+  match '/search', to: 'staticpages#search'
 
   match '/signup',  to: 'customers#new'
   match '/signin',  to: 'sessions#new'

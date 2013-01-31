@@ -1,35 +1,8 @@
 <html>
-<script
-src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
-</script>
-<script>
-function initialize()
-{
-	var center = new google.maps.LatLng(51.508742,-0.120850);
-	if (navigator.geolocation)
-    {
-	    navigator.geolocation.getCurrentPosition(function(position){
-	    	console.log(position.coords.latitude);
-	    	center = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-	    	var mapProp = {
-			  center:center,
-			  zoom:5,
-			  mapTypeId:google.maps.MapTypeId.ROADMAP
-			};
-			var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-	    	
-	    });
-    }
-    else  	
-    console.log(center);
-}
-google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-</head>
-<body>
-<div id="googleMap" style="width:700px;height:480px;"></div>
+
 <div>
-	<aside>
+
+<aside>
 <p id="notice"><%= notice %></p>
 <p>
   <b>Hello </b>
@@ -39,5 +12,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <%= link_to 'Back', customers_path %>
 </aside>
 </div>
+
 </body>
 </html>

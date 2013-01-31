@@ -1,13 +1,19 @@
 class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
-  def index
-    @customers = Customer.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @customers }
-    end
+  def search
+
+    puts 100*"$"
+    
+  end
+
+  def index
+
+    #respond_to do |format|
+     # format.html # index.html.erb
+     # format.json { render json: @customers }
+    #end
   end
 
   # GET /customers/1

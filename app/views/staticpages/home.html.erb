@@ -13,4 +13,48 @@
     <%= link_to "Sign In!", signin_path, 
                                 class: "btn btn-large btn-primary" %>
   </div>
+<br/>
+  <br/>
+  <div>
+    <h2>Find the location of the IP address</h2>
+    
+      <%= form_tag :action => 'search' do %>
+       <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :class => 'nil' %>
+       </p>
+      <% end %>
+  </div>
+ <br/>
+<br/>
+
+<script
+src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+</script>
+<script>
+function initialize()
+{
+  var center = new google.maps.LatLng(51.508742,-0.120850);
+  if (navigator.geolocation)
+    {
+      navigator.geolocation.getCurrentPosition(function(position){
+        console.log(position.coords.latitude);
+        center = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+        var mapProp = {
+        center:center,
+        zoom:5,
+        mapTypeId:google.maps.MapTypeId.ROADMAP
+      };
+      var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+        
+      });
+    }
+    else    
+    console.log(center);
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<body>
+<div id="googleMap" style="width:700px;height:480px;"></div>
 </center>
