@@ -1,8 +1,22 @@
 var locations = new Array();
-var lati = 47.5839;
-var longi = -122.299;
-locations.push(['madhu',lati, longi]);
-console.log(map);
+var lati;
+var longi;
+console.log("hello");
+<% if !@hash.keys.nil? %>
+  <% @hash.keys.each do |key| %>
+    <% if key == 'latitude' %>
+         lati = <%= @hash[key] %>;
+    <% end %>
+    <% if key == 'longitude' %>
+         longi = <%= @hash[key] %>;
+    <% end %>
+  <% end %>
+<% end %>
+
+locations.push(['madhu',lati , longi]);
+
+console.log(locations);
+
 console.log($('#googleMap')[0]);
 showMarkers();
 function showMarkers(){

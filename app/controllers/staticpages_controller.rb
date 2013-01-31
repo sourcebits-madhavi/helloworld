@@ -5,8 +5,9 @@ class StaticpagesController < ApplicationController
 
       require 'net/http'
 
-      url = URI.parse('http://freegeoip.net/json/50.16.105.214')
-      #url = URI.parse('http://freegeoip.net/json/params[:search]')
+      ip_address=params[:search]
+     # url = URI.parse('http://freegeoip.net/json/50.16.105.214')
+      url = URI.parse('http://freegeoip.net/json/'+ip_address)
       req = Net::HTTP::Get.new(url.path)
       res = Net::HTTP.start(url.host, url.port) {|http|
         http.request(req)
